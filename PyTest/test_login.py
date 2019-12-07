@@ -6,7 +6,7 @@ class TestLoginPyTest:
 
     @pytest.fixture()
     def test_classMethods(self):
-        self.driver = webdriver.Chrome(executable_path="set your chrome path here")
+        self.driver = webdriver.Chrome(executable_path="/Users/vaishali.thakkar/ToDo/PythonUnitTest/chromedriver")
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
         self.driver.get("http://automationpractice.com/index.php")
