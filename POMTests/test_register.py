@@ -1,15 +1,12 @@
 import pytest
 from selenium import webdriver
 from Pages.HomePage import HomePage
-from Pages.LoginPage import LoginPage
+from Pages.RegisterPage import RegisterPage
 from webdriver_manager.chrome import ChromeDriverManager
+from Data.UserDataBean import UserDataBean
 
 
-class TestLoginPyTestPOM:
-    testdata = [
-        ("tst1.automation@gmail.com", "Test0001"),
-        ("tst1.automation@gmail.com", "Test0001"),
-    ]
+class TestRegister:
 
     @pytest.yield_fixture()
     def testFixtures(self):
@@ -21,9 +18,11 @@ class TestLoginPyTestPOM:
         yield
         self.driver.quit()
 
-    def test_login(self, testFixtures, username="tst1.automation@gmail.com", password="Test0001"):
+    def test_Register(self, testFixtures):
         homePage = HomePage(self.driver)
         homePage.navigate_to_login_page()
 
-        loginPage = LoginPage(self.driver)
-        loginPage.login(username, password)
+        userInfo = UserDataBean().get_random_user_data()
+        registerPage = RegisterPage(self.driver)
+        registerPage.navigate_to_registration_page(userInfo)
+        registerPage.fill_registration_details(userInfo)

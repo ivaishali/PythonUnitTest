@@ -11,7 +11,7 @@ phone_digits = '023456789'
 
 
 class UserDataBean:
-    def random_user_data(self, email_id_type='get_random_string'):
+    def get_random_user_data(self, email_id_type='get_random_string'):
         user_info = {}
 
         method_to_call = getattr(self, email_id_type)
@@ -105,4 +105,4 @@ class UserDataBean:
         return password
 
 
-print(UserDataBean().random_user_data())
+print(UserDataBean().get_random_user_data())
